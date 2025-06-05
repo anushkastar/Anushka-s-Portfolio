@@ -79,6 +79,14 @@ if (USE_GITHUB_DATA === "true") {
       data += d;
     });
     res.on("end", () => {
+
+
+       const path = require("path");
+
+const publicDir = path.join(__dirname, "public");
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir);
+}
       fs.writeFile("./public/profile.json", data, function (err) {
         if (err) return console.log(err);
         console.log("saved file to public/profile.json");
@@ -95,6 +103,13 @@ if (USE_GITHUB_DATA === "true") {
 }
 
 if (MEDIUM_USERNAME !== undefined) {
+
+   const path = require("path");
+
+const publicDir = path.join(__dirname, "public");
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir);
+}
   console.log(`Fetching Medium blogs data for ${MEDIUM_USERNAME}`);
   const options = {
     hostname: "api.rss2json.com",
